@@ -1,2 +1,36 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<div class="d-flex align-items-center flex-column">
+  <div class="card" style="width: 25rem;">
+    <div class="card-body">
+      <h5 class="card-title text-center">Sign up</h5>
+      <%= form_with(model: @user, local: true) do |f| %>
+        <% if @user.errors.any? %>
+          <div id="error_explanation">
+            <div class="alert alert-warning" role="alert">
+            <h6><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h6>
+            <ul>
+            <% @user.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+            </ul>
+            </div>
+          </div>
+        <% end %>
+
+        <div class="form-group field">
+          <%= f.label :name %><br />
+          <%= f.text_field :name, class: "form-control" %>
+        </div>
+
+        <div class="form-group field">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "Sign up", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>
