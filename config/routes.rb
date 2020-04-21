@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :events, only: [:create, :new, :show, :index]
   root 'users#show'
   resources :users, only: [:new, :create, :show]
   get 'login', to: 'sessions#new'
