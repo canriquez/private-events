@@ -1,5 +1,9 @@
 <h1>Users#show</h1>
 <p>Find me in app/views/users/show.html.erb</p>
 <% if @current_user %>
-              <small><%= "Welcome #{@current_user.name}" %></small>
+    <small><%= "Welcome #{@current_user.name}" %></small>
+    <% @current_user.events.each do |event| %>
+    <p><%=  " Event Title: #{event.name}, name: #{event.description}" %></p>
+    <% end %>
+
 <% end %>
