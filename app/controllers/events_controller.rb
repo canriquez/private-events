@@ -8,7 +8,7 @@ class EventsController < ApplicationController
       redirect_to root_path
     else
 
-      
+
       render :new
     end
   end
@@ -18,6 +18,7 @@ class EventsController < ApplicationController
   end
 
   def show
+    @event = Event.find(params[:id])
   end
 
   def index

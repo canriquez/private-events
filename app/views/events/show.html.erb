@@ -1,2 +1,10 @@
-<h1>Events#show</h1>
-<p>Find me in app/views/events/show.html.erb</p>
+<div class="d-flex align-items-center flex-column">
+  <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title"><%= @event.name %></h5>
+      <p class="card-text"><%= @event.description %></p>
+      <p class="card-text"><%= @event.date %></p>
+      <p class="card-text"><%= @event.place %></p>
+    </div>
+  </div>
+</div>
