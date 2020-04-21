@@ -8,4 +8,13 @@
       <p class="card-text"> by: <%= @event.creator.name %></p>
     </div>
   </div>
+  <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <% @event.guests.each do |guest| %>
+      <p> Guest name: <%= "#{guest.name}" %> email: <%= "#{guest.email}" %></p>
+      <% end %>
+
+    </div>
+  </div>
 </div>
+
