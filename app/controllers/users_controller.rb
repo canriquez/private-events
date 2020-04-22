@@ -18,8 +18,9 @@ class UsersController < ApplicationController
 
   def show
     @current_user = User.find_by(remember_me: cookies[:remember_me])
-    p "upcomming events"
-    p @current_user.upcoming_events
+
+    @upcoming_events = @current_user.upcoming_events 
+    @prev_events = @current_user.previous_events
   end
 
   private
