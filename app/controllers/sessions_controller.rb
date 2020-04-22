@@ -1,7 +1,5 @@
 class SessionsController < ApplicationController
-
-  def new
-  end
+  def new; end
 
   def create
     user = User.find_by(email: params[:email])
@@ -14,7 +12,6 @@ class SessionsController < ApplicationController
       flash.now[:alert] = 'The provided credentials are not correct'
       render 'new'
     end
-    
   end
 
   def destroy
@@ -22,5 +19,4 @@ class SessionsController < ApplicationController
     flash[:notice] = 'You have logged out'
     redirect_to root_path
   end
-
 end

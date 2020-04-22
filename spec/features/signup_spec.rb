@@ -14,4 +14,3 @@ RSpec.describe 'User creates a new registered user', type: :feature do
     expect(page).to have_content('exampleUser')
   end
 end
-

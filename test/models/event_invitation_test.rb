@@ -14,20 +14,18 @@ class EventInvitationTest < ActiveSupport::TestCase
     @ei.save
   end
 
-   # EventInvitation model test
-   test 'should be valid if the complete EventInvitation setup is valid' do
+  # EventInvitation model test
+  test 'should be valid if the complete EventInvitation setup is valid' do
     assert @ei.valid?
-   end
+  end
 
-   test 'should be valid EventInvitation <=> event association check fails' do
+  test 'should be valid EventInvitation <=> event association check fails' do
     @ei.attended_event = nil
     assert_not @ei.valid?
-   end
+  end
 
-   test 'should be valid EventInvitation <=> user:attendee association check fails' do
+  test 'should be valid EventInvitation <=> user:attendee association check fails' do
     @ei.attendee = nil
     assert_not @ei.valid?
-   end
-
-
   end
+end

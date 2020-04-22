@@ -5,13 +5,13 @@ class UserTest < ActiveSupport::TestCase
     @user = User.new(name: 'Example user', email: 'user@example.com')
     @user.save
   end
-# User model test
+  # User model test
   test 'should be valid' do
     assert @user.valid?
   end
 
   test 'should be not valid when :name above max size 50 characters' do
-    @user.name = 'names'*20
+    @user.name = 'names' * 20
     @user.save
     assert_not @user.valid?
   end
@@ -22,7 +22,7 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.valid?
   end
 
-  #email test
+  # email test
 
   test 'should be not valid when :email is not format compliant' do
     @user.email = 'aba@'
@@ -43,18 +43,13 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.valid?
   end
 
-
-
-
-=begin   test 'title should be the right length' do
-    @post.title = 'a' * 300
-    assert_not @post.valid?
-  end
-
-  test 'body should be the right length' do
-    @post.body = 'aa'
-    assert_not @post.valid?
-  end 
-=end
-
+  #   test 'title should be the right length' do
+  #     @post.title = 'a' * 300
+  #     assert_not @post.valid?
+  #   end
+  #
+  #   test 'body should be the right length' do
+  #     @post.body = 'aa'
+  #     assert_not @post.valid?
+  #   end
 end

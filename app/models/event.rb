@@ -1,22 +1,21 @@
 class Event < ApplicationRecord
-    validates :name, presence: true, length: { minimum: 5 }
-    validates :description, presence: true, length: { minimum: 20 }
-    validates :place, presence: true, length: { minimum: 10 }
-    validates :date, presence: true
+  validates :name, presence: true, length: { minimum: 5 }
+  validates :description, presence: true, length: { minimum: 20 }
+  validates :place, presence: true, length: { minimum: 10 }
+  validates :date, presence: true
 
-    has_many :event_invitations, foreign_key: "attended_event_id" 
-    belongs_to :creator, class_name: "User"
-    has_many :guests, through: :event_invitations, source: :attendee
+  has_many :event_invitations, foreign_key: 'attended_event_id'
+  belongs_to :creator, class_name: 'User'
+  has_many :guests, through: :event_invitations, source: :attendee
 
+  # def self.future
+  #     self.all.includes(:creator).where("date >= ? ", Date.today);
+  # end
 
-    # def self.future
-    #     self.all.includes(:creator).where("date >= ? ", Date.today);
-    # end
+  # def self.past
+  #     self.all.includes(:creator).where("date <= ? ", Date.today);
+  # end
 
-    # def self.past
-    #     self.all.includes(:creator).where("date <= ? ", Date.today);
-    # end
-
-    scope :future, -> {all.includes(:creator).where("date >= ? ", Date.today)}
-    scope :past, -> {all.includes(:creator).where("date <= ? ", Date.today)}
+  scope :future, -> { all.includes(:creator).where('date >= ? ', Date.today) }
+  scope :past, -> { all.includes(:creator).where('date <= ? ', Date.today) }
 end

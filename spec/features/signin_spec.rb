@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe 'User creates a new registered user', type: :feature do
   before(:each) do
-    @user = User.new(name:'exampleUser', email:'example@example.com')
+    @user = User.new(name: 'exampleUser', email: 'example@example.com')
     @user.save
   end
   scenario 'they access the home page and click the signup button' do
@@ -17,4 +17,3 @@ RSpec.describe 'User creates a new registered user', type: :feature do
     expect(page).to have_content('exampleUser')
   end
 end
-

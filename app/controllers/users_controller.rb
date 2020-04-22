@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
-
   before_action :allowed?, only: %i[show index new create]
-  
+
   def new
     @user = User.new
   end
@@ -20,14 +19,13 @@ class UsersController < ApplicationController
   def show
     @current_user = User.find_by(remember_me: cookies[:remember_me])
 
-    @upcoming_events = @current_user.upcoming_events 
+    @upcoming_events = @current_user.upcoming_events
     @prev_events = @current_user.previous_events
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:name,:email)
+    params.require(:user).permit(:name, :email)
   end
-
 end
