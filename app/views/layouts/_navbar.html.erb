@@ -1,0 +1,20 @@
+<nav class="navbar navbar-expand-lg  navbar-dark bg-primary">
+  <%= link_to 'Club House', root_path, class: "navbar-brand" %>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <%= link_to 'Home', root_path, class: "nav-item nav-link" %>
+    </div>
+    <div class="navbar-nav ml-auto">
+      <% if false %>
+        <a class="nav-item nav-link" ><%= "Welcome | #{@current_user.username} |" %></a>
+        <%= link_to 'Sign Out', signout_path, method: 'delete', class: "nav-item nav-link" %>
+      <% else %>
+        <%= link_to 'Sign Up', new_user_path, class: "nav-item nav-link" %>
+        <%= link_to 'Sign In', login_path, class: "nav-item nav-link" %>
+      <% end %>
+    </div>
+  </div>
+</nav>
