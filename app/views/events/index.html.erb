@@ -1,11 +1,31 @@
-<h1>Events List </h1>
-<h5>Future Events</h5>
-<% @future.each do |event| %>
-    <p> Event Title:  <%= link_to "#{event.name}", event_path(event)  %> name: <%= "#{event.description}" %>, Creator: <%= "#{event.creator.name}" %> </p>
+<div class="text-center">
+    <h1>Events List </h1>
+    <h5>Future Events</h5>
+</div>
+<div class="d-flex justify-content-center flex-wrap">
+    <% @future.each do |event| %>
+        <div class="card m-4" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title"><%= link_to "#{event.name}", event_path(event)  %></h5>
+            <p class="card-text"><%= "#{event.description}" %></p>
+            <small>by: <%= "#{event.creator.name}" %> </small>
+        </div>
+        </div>
+    <% end %>
+</div>
 
-<% end %>
-<h5>Past Events</h5>
-<% @past.each do |event| %>
-    <p> Event Title:  <%= link_to "#{event.name}", event_path(event)  %> name: <%= "#{event.description}" %>, Creator: <%= "#{event.creator.name}" %> </p>
+<div class="text-center">
+    <h5>Past Events</h5>
+</div>
 
-<% end %>
+<div class="d-flex justify-content-center flex-wrap">
+    <% @past.each do |event| %>
+        <div class="card m-4" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title"><%= link_to "#{event.name}", event_path(event)  %></h5>
+            <p class="card-text"><%= "#{event.description}" %></p>
+            <small>by: <%= "#{event.creator.name}" %> </small>
+        </div>
+        </div>
+    <% end %>
+</div>
