@@ -1,7 +1,11 @@
 <h1>Events List </h1>
-
-    <% @full_data_events.each do |event| %>
+<h5>Future Events</h5>
+<% @future.each do |event| %>
     <p> Event Title:  <%= link_to "#{event.name}", event_path(event)  %> name: <%= "#{event.description}" %>, Creator: <%= "#{event.creator.name}" %> </p>
 
-    <% end %>
+<% end %>
+<h5>Past Events</h5>
+<% @past.each do |event| %>
+    <p> Event Title:  <%= link_to "#{event.name}", event_path(event)  %> name: <%= "#{event.description}" %>, Creator: <%= "#{event.creator.name}" %> </p>
 
+<% end %>

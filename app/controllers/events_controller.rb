@@ -23,9 +23,9 @@ class EventsController < ApplicationController
   end
 
   def index
-    @full_data_events = Event.all.includes(:creator)
-    puts "hey - data"
-    p @full_data_events
+    @past = Event.past
+    @future = Event.future
+    
   end
 
 
