@@ -9,7 +9,7 @@
     </div>
     <div class="navbar-nav ml-auto">
       <% if @current_user %>
-        <a class="nav-item nav-link" ><%= "Welcome | #{@current_user.name} |" %></a>
+        <%= link_to "#{@current_user.name} Events ", user_path(@current_user), class: "btn btn-success nav-item nav-link" %>
         <%= link_to 'Sign Out', signout_path, method: 'delete', class: "nav-item nav-link" %>
       <% else %>
         <%= link_to 'Sign Up', new_user_path, class: "nav-item nav-link" %>
