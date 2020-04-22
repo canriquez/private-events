@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   validates :name, presence: true, length: { maximum: 50 }
 
-  has_many :events, foreign_key: 'creator_id', class_name: 'Event'
+  has_many :events, foreign_key: 'creator_id'
   has_many :event_invitations, foreign_key: 'attendee_id', class_name: 'EventInvitation'
 
   def create_token

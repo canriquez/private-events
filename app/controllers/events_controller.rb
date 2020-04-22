@@ -2,7 +2,6 @@ class EventsController < ApplicationController
   before_action :allowed?, only: %i[show index new create]
 
   def create
-   # @current_user = User.find_by(remember_me: cookies[:remember_me])
     @event = @current_user.events.build(event_params)
     if @current_user && @event.save
       flash[:notice] = "Event: #{@event.name} saved successfully"
