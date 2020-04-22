@@ -18,6 +18,9 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    cookies.permanent[:remember_me] = nil
+    flash[:notice] = 'You have logged out'
+    redirect_to root_path
   end
 
 end

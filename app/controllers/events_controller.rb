@@ -1,5 +1,7 @@
 class EventsController < ApplicationController
 
+  before_action :allowed?, only: %i[show index new create]
+
   def create
     @event = Event.new(event_params)
     @current_user = User.find_by(remember_me: cookies[:remember_me]);
@@ -34,4 +36,5 @@ class EventsController < ApplicationController
   def event_params
     params.require(:event).permit(:name,:description, :place, :date)
   end
+
 end
