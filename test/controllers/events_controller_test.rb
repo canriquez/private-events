@@ -1,5 +1,6 @@
 require 'test_helper'
 
+=begin 
 class EventsControllerTest < ActionDispatch::IntegrationTest
   test "should get create" do
     get events_create_url
@@ -22,3 +23,4 @@ class EventsControllerTest < ActionDispatch::IntegrationTest
   end
 
 end
+=end

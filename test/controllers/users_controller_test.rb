@@ -1,5 +1,6 @@
 require 'test_helper'
 
+=begin 
 class UsersControllerTest < ActionDispatch::IntegrationTest
   test "should get create" do
     get users_create_url
@@ -17,3 +18,4 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
 end
+=end

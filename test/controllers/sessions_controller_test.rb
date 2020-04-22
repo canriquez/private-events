@@ -1,5 +1,5 @@
 require 'test_helper'
-
+=begin 
 class SessionsControllerTest < ActionDispatch::IntegrationTest
   test "should get new" do
     get sessions_new_url
@@ -7,3 +7,4 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
   end
 
 end
+=end
