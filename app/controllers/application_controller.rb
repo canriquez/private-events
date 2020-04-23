@@ -14,4 +14,11 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def same_user?
+    if @current_user.id != params[:id]
+      flash[:alert] = "You are not allowed to visit other users's profile!"
+      redirect_to root_path
+    end 
+  end
+
 end

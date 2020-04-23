@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :current_user, only: %i[show index new create]
   before_action :user_signedin?, only: %i[show new create]
+  before_action :same_user?, only: %i[show]
 
   def new
     @user = User.new
