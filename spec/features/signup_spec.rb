@@ -1,7 +1,5 @@
 require 'rails_helper'
 
-# testing a signup
-
 RSpec.describe 'User creates a new registered user', type: :feature do
   scenario 'they access the home page and click the signup button' do
     visit signup_path

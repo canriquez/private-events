@@ -1,7 +1,5 @@
 require 'rails_helper'
 
-# testing a signup
-
 RSpec.describe 'User creates a new registered user', type: :feature do
   before(:each) do
     @user = User.new(name: 'exampleUser', email: 'example@example.com')

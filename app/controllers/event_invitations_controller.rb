@@ -13,7 +13,6 @@ class EventInvitationsController < ApplicationController
         end
     end
 
-
     private
     def ei_params
         params.require(:invitation).permit(:attendee_id, :attended_event_id)
