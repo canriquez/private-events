@@ -14,18 +14,17 @@ RSpec.describe 'Event Invitation' do
     @ei.save
   end
 
-
   it 'should be valid if the complete EventInvitation setup is valid' do
-    expect(@ei).to be_valid 
+    expect(@ei).to be_valid
   end
 
   it 'should be valid EventInvitation <=> event association check fails' do
     @ei.attended_event = nil
-    expect(@ei).to_not be_valid 
+    expect(@ei).to_not be_valid
   end
 
   it 'should be valid EventInvitation <=> user:attendee association check fails' do
     @ei.attendee = nil
-    expect(@ei).to_not be_valid 
+    expect(@ei).to_not be_valid
   end
 end

@@ -18,42 +18,42 @@ RSpec.describe 'Event' do
   it 'should be valid if event:name is nil' do
     @event.name = nil
     @event.save
-    expect(@event).to_not be_valid 
+    expect(@event).to_not be_valid
   end
 
   it 'should be valid if event:name is below min length' do
     @event.name = 'xxx'
     @event.save
-    expect(@event).to_not be_valid 
+    expect(@event).to_not be_valid
   end
 
   it 'should be valid if event:description is nil' do
     @event.description = nil
     @event.save
-    expect(@event).to_not be_valid 
+    expect(@event).to_not be_valid
   end
 
   it 'should be valid if event:description is below min length' do
     @event.description = 'xxx'
     @event.save
-    expect(@event).to_not be_valid 
+    expect(@event).to_not be_valid
   end
 
   it 'should be valid if event:place is nil' do
     @event.place = nil
     @event.save
-    expect(@event).to_not be_valid 
+    expect(@event).to_not be_valid
   end
 
   it 'should be valid if event:place is below min length' do
     @event.place = 'xxx'
     @event.save
-    expect(@event).to_not be_valid 
+    expect(@event).to_not be_valid
   end
 
   it 'should be valid if event:date is nil' do
     @event.date = nil
     @event.save
-    expect(@event).to_not be_valid 
+    expect(@event).to_not be_valid
   end
 end

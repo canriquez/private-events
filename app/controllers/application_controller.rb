@@ -8,17 +8,12 @@ class ApplicationController < ActionController::Base
   end
 
   def user_signedin?
-    if !@current_user
-      flash[:alert] = 'You are not allowed to visint this route. Sign In!'
-      redirect_to root_path
-    end
+    redirect_to root_path, alert: 'You are not allowed to visint this route. Sign In!' unless @current_user
   end
 
   def same_user?
-    if @current_user.id != params[:id]
-      flash[:alert] = "You are not allowed to visit other users's profile!"
-      redirect_to root_path
-    end 
-  end
+    return if current_user.id == params[:id]
 
+    redirect_to root_path, alert: "You are not allowed to visit other users's profile!"
+  end
 end

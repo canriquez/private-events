@@ -19,10 +19,9 @@ class EventsController < ApplicationController
   end
 
   def show
-    
     @invitation = EventInvitation.new
     @event = Event.find(params[:id])
-    @uninvited =  User.where.not(:id => @event.guests)
+    @uninvited = User.where.not(id: @event.guests)
   end
 
   def index
