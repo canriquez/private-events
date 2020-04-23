@@ -11,9 +11,7 @@ class EventTest < ActiveSupport::TestCase
     @event.save
   end
 
-  # User model test
   test 'should be valid if the complete Event setup is valid' do
-    # p @event.errors.full_messages
     assert @event.valid?
   end
 

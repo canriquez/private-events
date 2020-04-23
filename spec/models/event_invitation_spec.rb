@@ -1,7 +1,7 @@
-require 'test_helper'
+require 'rails_helper'
 
-class EventInvitationTest < ActiveSupport::TestCase
-  def setup
+RSpec.describe 'Event Invitation' do
+  before(:each) do
     @user = User.new(name: 'Example user', email: 'user@example.com')
     @user.save
 
@@ -14,17 +14,18 @@ class EventInvitationTest < ActiveSupport::TestCase
     @ei.save
   end
 
-  test 'should be valid if the complete EventInvitation setup is valid' do
-    assert @ei.valid?
+
+  it 'should be valid if the complete EventInvitation setup is valid' do
+    expect(@ei).to be_valid 
   end
 
-  test 'should be valid EventInvitation <=> event association check fails' do
+  it 'should be valid EventInvitation <=> event association check fails' do
     @ei.attended_event = nil
-    assert_not @ei.valid?
+    expect(@ei).to_not be_valid 
   end
 
-  test 'should be valid EventInvitation <=> user:attendee association check fails' do
+  it 'should be valid EventInvitation <=> user:attendee association check fails' do
     @ei.attendee = nil
-    assert_not @ei.valid?
+    expect(@ei).to_not be_valid 
   end
 end
