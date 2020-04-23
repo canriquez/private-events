@@ -4,7 +4,7 @@ This project builds a Rails application for an Event management application, use
 
 # Live Version
 
-- [Live Application Access](https://afternoon-ridge-15468.herokuapp.com/)
+- [Live Application Access](https://peaceful-tundra-83668.herokuapp.com/)
 
 ## Environment set up requirements
 
