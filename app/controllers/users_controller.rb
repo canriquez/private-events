@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :current_user, only: %i[show index new create]
+  before_action :user_signedin?, only: %i[show new create]
 
   def new
     @user = User.new
@@ -17,10 +18,12 @@ class UsersController < ApplicationController
   end
 
   def show
-    @current_user = User.find_by(remember_me: cookies[:remember_me])
+    @user = User.find(params[:id])
+    puts "from mbrowser, User is #{params[:id]}"
+    p @user
 
-    @upcoming_events = @current_user.upcoming_events
-    @prev_events = @current_user.previous_events
+    @upcoming_events = @user.upcoming_events
+    @prev_events = @user.previous_events
   end
 
   private
