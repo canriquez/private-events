@@ -5,6 +5,8 @@ class EventsController < ApplicationController
   def create
     @event = @current_user.events.build(event_params)
     if @current_user && @event.save
+      invitation = EventInvitation.new(attended_event: @event, attendee: @current_user)
+      invitation.save
       flash[:notice] = "Event: #{@event.name} saved successfully"
       redirect_to root_path
     else
@@ -17,7 +19,15 @@ class EventsController < ApplicationController
   end
 
   def show
+    
+    @invitation = EventInvitation.new
     @event = Event.find(params[:id])
+
+    puts " Here is the event info we pass to the view"
+    p @event
+    p @invitation
+
+    @uninvited =  User.where.not(:id => @event.guests)
   end
 
   def index

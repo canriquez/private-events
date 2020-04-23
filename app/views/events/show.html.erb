@@ -15,5 +15,32 @@
       <% end %>
     </div>
   </div>
+  <h5>Invite People to this event</h5>
+
+ <!-- <select id="select_invitee">
+    <% @uninvited.each do |user| %>
+      <option value="<%= user.id %>"><%= user.name %></option>
+    <% end %>
+  </select>
+  -->
+
+  <div class="card" style="width: 25rem;">
+    <div class="card-body">
+      <%= form_with(url: invite_path, method: 'post', local: true) do |f| %>
+          <%= hidden_field(:invitation, :attended_event_id, value: @event.id) %>
+    
+        <div class="form-group field">
+          <%= f.label 'Available Members to Invite' %><br />
+          <%= collection_select(:invitation, :attendee_id, @uninvited, :id, :name) %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "Invite Member", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+  </div>
 </div>
+
+</div>
+
 
