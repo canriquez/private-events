@@ -3,7 +3,15 @@ class ApplicationController < ActionController::Base
     cookies.permanent[:remember_me] = user.create_token
   end
 
-  def allowed?
+  def current_user
     @current_user = User.find_by(remember_me: cookies[:remember_me])
   end
+
+  def user_signedin?
+    if !@current_user
+      flash[:alert] = 'You are not allowed to visint this route. Sign In!'
+      redirect_to root_path
+    end
+  end
+
 end

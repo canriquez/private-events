@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :allowed?, only: %i[show index new create]
+  before_action :current_user, only: %i[show index new create]
 
   def new
     @user = User.new

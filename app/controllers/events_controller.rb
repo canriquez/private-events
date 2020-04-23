@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
-  before_action :allowed?, only: %i[show index new create]
+  before_action :current_user, only: %i[show index new create]
+  before_action :user_signedin?, only: %i[new create]
 
   def create
     @event = @current_user.events.build(event_params)
