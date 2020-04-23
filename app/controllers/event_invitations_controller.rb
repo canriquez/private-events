@@ -1,15 +1,9 @@
 class EventInvitationsController < ApplicationController
 
     def create
-        puts "EI params is here"
-        p ei_params
         invitation = EventInvitation.new(ei_params)
         invited = invitation.attendee
         event = invitation.attended_event
-
-        puts "this is the invitation"
-        p invitation
-
         if invitation.save
           flash[:notice] = "User: #{invited} Invited successfully"
           redirect_to event_path(event)

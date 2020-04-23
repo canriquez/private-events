@@ -22,11 +22,6 @@ class EventsController < ApplicationController
     
     @invitation = EventInvitation.new
     @event = Event.find(params[:id])
-
-    puts " Here is the event info we pass to the view"
-    p @event
-    p @invitation
-
     @uninvited =  User.where.not(:id => @event.guests)
   end
 
