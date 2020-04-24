@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  attr_accessor :new_notice
+  after_save :new_user_was_saved_to_db
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i.freeze
   validates :email, presence: true,
                     uniqueness: { case_sensitive: false },
@@ -23,4 +25,11 @@ class User < ApplicationRecord
   def previous_events
     events.where('date <= ? ', Date.today)
   end
+
+  def new_user_was_saved_to_db
+    @new_notice = "new user #{self.name} successfully saved on the database"
+    puts "new user #{self.name} successfully saved on the database"
+  end
+
+
 end

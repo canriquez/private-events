@@ -10,7 +10,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:notice] = "Welcome #{@user.email}, enjoy your time."
+      flash[:notice] = @user.new_notice if @user.new_notice
+      #flash[:notice] = "Welcome #{@user.email}, enjoy your time."
       sign_in(@user)
       redirect_to root_path
     else
@@ -32,4 +33,5 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :email)
   end
+
 end
