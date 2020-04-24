@@ -4,9 +4,9 @@ class EventInvitationsController < ApplicationController
     invited = invitation.attendee
     event = invitation.attended_event
     if invitation.save
-      flash[:notice] = "User: #{invited} Invited successfully"
+      flash[:notice] = "User: #{invited.name} Invited successfully"
     else
-      flash[:warning] = "Invitation for user: #{invited} failed"
+      flash[:warning] = "Invitation for user: #{invited.name} failed"
     end
     redirect_to event_path(event)
   end

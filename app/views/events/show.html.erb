@@ -1,41 +1,42 @@
-<div class="d-flex align-items-center flex-column">
-  <div class="card" style="width: 18rem;">
-    <div class="card-body">
-      <h5 class="card-title"><%= @event.name %></h5>
-      <p class="card-text"><%= @event.description %></p>
-      <p class="card-text"><%= @event.date %></p>
-      <p class="card-text"><%= @event.place %></p>
-      <p class="card-text"> by: <%= @event.creator.name %></p>
-    </div>
+<div class="d-flex justify-content-center">
+  <div class="d-flex align-items-center flex-column">
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title"><%= @event.name %></h5>
+          <p class="card-text"><%= @event.description %></p>
+          <p class="card-text"><%= @event.date %></p>
+          <p class="card-text"><%= @event.place %></p>
+          <p class="card-text"> by: <%= @event.creator.name %></p>
+        </div>
+      </div>
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <% @event.guests.each do |guest| %>
+          <p> Guest name: <%= "#{guest.name}" %> email: <%= "#{guest.email}" %></p>
+          <% end %>
+        </div>
+      </div>
   </div>
-  <div class="card" style="width: 18rem;">
-    <div class="card-body">
-      <% @event.guests.each do |guest| %>
-      <p> Guest name: <%= "#{guest.name}" %> email: <%= "#{guest.email}" %></p>
-      <% end %>
-    </div>
+  <div class="d-flex align-items-center flex-column">
+    <% if user_invited(@event) %>
+    <h5>Invite People to this event</h5>
+      <div class="card" style="width: 25rem;">
+        <div class="card-body">
+          <%= form_with(url: invite_path, method: 'post', local: true) do |f| %>
+              <%= hidden_field(:invitation, :attended_event_id, value: @event.id) %>
+        
+            <div class="form-group field">
+              <%= f.label 'Available Members to Invite' %><br />
+              <%= collection_select(:invitation, :attendee_id, @uninvited, :id, :name) %>
+            </div>
+
+            <div class="actions">
+              <%= f.submit "Invite Member", class: "btn btn-primary" %>
+            </div>
+          <% end %>
+      </div>
+    <% end %>
   </div>
-
-  <% if user_invited(@event) %>
-  <h5>Invite People to this event</h5>
-    <div class="card" style="width: 25rem;">
-      <div class="card-body">
-        <%= form_with(url: invite_path, method: 'post', local: true) do |f| %>
-            <%= hidden_field(:invitation, :attended_event_id, value: @event.id) %>
-      
-          <div class="form-group field">
-            <%= f.label 'Available Members to Invite' %><br />
-            <%= collection_select(:invitation, :attendee_id, @uninvited, :id, :name) %>
-          </div>
-
-          <div class="actions">
-            <%= f.submit "Invite Member", class: "btn btn-primary" %>
-          </div>
-        <% end %>
-    </div>
-  <% end %>
-</div>
-
 </div>
 
 
